@@ -222,8 +222,10 @@ class ModelTest extends TestCase
         $this->assertTrue(is_bool($model->key1));
         $this->assertTrue($model->key1);
 
+        $expectedDate = Carbon::parse(1561437696);
+
         $this->assertInstanceOf(Carbon::class, $model->key3);
-        $this->assertSame('2019-06-25 05:41:36', $model->key3->format('Y-m-d H:i:s'));
+        $this->assertSame($expectedDate->format('Y-m-d H:i:s'), $model->key3->format('Y-m-d H:i:s'));
 
         $this->assertTrue(is_bool($model->key4));
         $this->assertFalse($model->key4);
