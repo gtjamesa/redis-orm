@@ -4,9 +4,9 @@ namespace JamesAusten\RedisORM;
 
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Redis;
+use Illuminate\Support\Str;
 use JamesAusten\RedisORM\Helpers\Model\GetAttributes;
 use JamesAusten\RedisORM\Redis\TTL;
-use JamesAusten\RedisORM\UUID\Factory as UUIDFactory;
 
 abstract class Model
 {
@@ -273,10 +273,7 @@ abstract class Model
      */
     protected function generateUuid()
     {
-        /** @var UUIDFactory $uuidFactory */
-        $uuidFactory = app(UUIDFactory::class);
-
-        return $uuidFactory->create();
+        return (string)Str::uuid();
     }
 
     /**
